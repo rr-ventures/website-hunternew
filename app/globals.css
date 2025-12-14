@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --header-height: 80px;
+}
+
+body {
+  @apply bg-white text-charcoal font-sans antialiased min-h-screen;
+  background-image: linear-gradient(120deg, rgba(249, 115, 22, 0.04), rgba(15, 23, 42, 0.02));
+}
+
+.section-shell {
+  @apply max-w-6xl mx-auto px-6 lg:px-8;
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur rounded-2xl shadow-soft border border-white/60;
+}
+
+.overlay-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.overlay-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.25));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.overlay-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(120deg, rgba(249, 115, 22, 0.12), rgba(15, 23, 42, 0.08));
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.hero-copy {
+  @apply text-white drop-shadow-lg;
+}
+
+nav a.active-link {
+  @apply text-charcoal font-semibold;
+}
+
+nav a.active-link span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #fb923c, #f97316);
+  border-radius: 9999px;
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 200%;
+}
+
+:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 3px;
+}
+
+.btn-shimmer {
+  background: linear-gradient(120deg, #f97316, #fbbf24, #f97316);
+  background-size: 200% 200%;
+}
+
+.reveal {
+  @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+}
+
+.reveal.visible {
+  @apply opacity-100 translate-y-0;
+}
